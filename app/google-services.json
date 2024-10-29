@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545922652304",
+    "project_id": "admin-java-d25c7",
+    "storage_bucket": "admin-java-d25c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545922652304:android:6e96b52c1d0946c09b6015",
+        "android_client_info": {
+          "package_name": "com.example.adminjava"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD77cXUGmfuihSCjLm4hs9qnDpUxAQJyAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

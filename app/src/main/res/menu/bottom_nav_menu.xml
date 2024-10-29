@@ -1,0 +1,16 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    <item
+        android:id="@+id/nav_add_course"
+        android:title="Thêm Khóa Học"
+        android:icon="@android:drawable/ic_input_add"
+        />
+
+    <item
+        android:id="@+id/nav_search_class"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search"
+        />
+
+</menu>

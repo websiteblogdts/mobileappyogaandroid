@@ -1,0 +1,60 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <EditText
+        android:id="@+id/edtCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Name" />
+
+    <EditText
+        android:id="@+id/edtCourseDayOfWeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Day of the Week" />
+
+    <EditText
+        android:id="@+id/edtCourseTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Time" />
+
+    <EditText
+        android:id="@+id/edtCourseCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Capacity"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edtCourseDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Duration (minutes)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edtCoursePrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/edtCourseType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Type" />
+
+    <EditText
+        android:id="@+id/edtCourseDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Description" />
+
+</LinearLayout>

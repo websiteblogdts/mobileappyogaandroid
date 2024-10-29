@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTeacherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teacher Name"
+        android:textSize="16sp"
+        android:paddingBottom="4dp" />
+
+    <EditText
+        android:id="@+id/edtTeacherName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter teacher name"
+        android:inputType="text" />
+
+    <!-- Date Input -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="16sp"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp" />
+
+    <EditText
+        android:id="@+id/edtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter date"
+        android:inputType="date" />
+
+    <!-- Comments Input -->
+    <TextView
+        android:id="@+id/tvComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comments"
+        android:textSize="16sp"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp" />
+
+    <EditText
+        android:id="@+id/edtComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter comments"
+        android:inputType="textMultiLine" />
+
+
+</LinearLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Admin Java</string>
+    <string name="select_course_prompt">Chọn khóa học</string>
+
+</resources>

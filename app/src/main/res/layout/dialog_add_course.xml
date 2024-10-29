@@ -1,0 +1,98 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Course Name -->
+    <EditText
+        android:id="@+id/edtCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Name" />
+
+    <!-- Day of the Week (Sử dụng AlertDialog) -->
+    <EditText
+        android:id="@+id/edtDayOfWeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Day of the Week"
+        android:focusable="false"
+        android:clickable="true" />
+
+    <!-- Course Time (Sử dụng TimePickerDialog) -->
+    <EditText
+        android:id="@+id/edtTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Time"
+        android:focusable="false"
+        android:clickable="true" />
+
+    <!-- Capacity (TextWatcher thêm chuỗi "persons") -->
+    <EditText
+        android:id="@+id/edtCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Capacity"
+        android:inputType="number" />
+
+    <!-- Duration -->
+    <EditText
+        android:id="@+id/edtDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Duration (minutes)"
+        android:inputType="number" />
+
+    <!-- Price (TextWatcher thêm ký hiệu "$") -->
+    <EditText
+        android:id="@+id/edtPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <!-- Course Type (RadioGroup cho loại khóa học) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course Type" />
+
+    <RadioGroup
+        android:id="@+id/edtType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioFlowYoga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow Yoga" />
+
+        <RadioButton
+            android:id="@+id/radioFamilyYoga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Family Yoga" />
+
+        <RadioButton
+            android:id="@+id/radioAerialYoga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aerial Yoga" />
+    </RadioGroup>
+
+    <!-- Course Description (ô mô tả lớn hơn) -->
+    <EditText
+        android:id="@+id/edtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Course Description"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:minLines="4" />
+
+</LinearLayout>

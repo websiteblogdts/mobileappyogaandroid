@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <!-- Ô nhập tên giáo viên để tìm kiếm -->
+    <EditText
+        android:id="@+id/et_search_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter teacher name"
+        android:padding="16dp"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="16sp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:importantForAutofill="no" />
+
+    <!-- Nút tìm kiếm -->
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp" />
+
+    <!-- RecyclerView hiển thị danh sách các lớp học -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_class_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical" />
+    <TextView
+        android:id="@+id/tv_empty_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trống"
+        android:gravity="center"
+        android:visibility="gone" /> <!-- Ẩn nó mặc định -->
+</LinearLayout>
