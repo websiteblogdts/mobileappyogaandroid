@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Columns for classes table
 private static final String COLUMN_CLASS_ID = "id";
+
     private static final String COLUMN_CLASS_COURSE_ID = "course_id";
     private static final String COLUMN_CLASS_TEACHER_NAME = "teacher_name";
     private static final String COLUMN_CLASS_DATE = "date";
@@ -152,6 +153,28 @@ private static final String CREATE_TABLE_CLASSES = "CREATE TABLE "
         cursor.close();
         return courseList;
     }
+    // Phương thức lấy course theo ID
+    public CourseModel getCourseById(long courseId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_COURSES, null, COLUMN_COURSE_ID + " = ?", new String[]{String.valueOf(courseId)}, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            @SuppressLint("Range") CourseModel courseModel = new CourseModel(
+                    cursor.getLong(cursor.getColumnIndex(COLUMN_COURSE_ID)), // ID khóa học
+                    cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_NAME)), // Tên khóa học
+                    cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_DAY_OF_WEEK)), // Ngày trong tuần
+                    cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_TIME)), // Thời gian
+                    cursor.getInt(cursor.getColumnIndex(COLUMN_COURSE_CAPACITY)), // Sức chứa
+                    cursor.getInt(cursor.getColumnIndex(COLUMN_COURSE_DURATION)), // Thời lượng
+                    cursor.getDouble(cursor.getColumnIndex(COLUMN_COURSE_PRICE)), // Giá
+                    cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_TYPE)), // Loại khóa học
+                    cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_DESCRIPTION)) // Mô tả
+            );
+            cursor.close();
+            return courseModel;
+        }
+        return null;
+    }
 
 
     public void updateCourse(CourseModel course) {
@@ -265,6 +288,24 @@ public long addClass(long courseId, String teacherName, String date, String comm
         cursor.close();
         return classList;
     }
+    // Phương thức lấy class theo ID
+    public ClassModel getClassById(long classId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_CLASSES, null, COLUMN_CLASS_ID + " = ?", new String[]{String.valueOf(classId)}, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            @SuppressLint("Range") ClassModel classModel = new ClassModel(
+                    cursor.getLong(cursor.getColumnIndex(COLUMN_CLASS_ID)), // ID lớp học
+                    cursor.getLong(cursor.getColumnIndex(COLUMN_CLASS_COURSE_ID)), // ID khóa học
+                    cursor.getString(cursor.getColumnIndex(COLUMN_CLASS_TEACHER_NAME)), // Tên giáo viên
+                    cursor.getString(cursor.getColumnIndex(COLUMN_CLASS_DATE)), // Ngày lớp học
+                    cursor.getString(cursor.getColumnIndex(COLUMN_CLASS_COMMENTS)) // Nhận xét (comments)
+            );
+            cursor.close();
+            return classModel;
+        }
+        return null;
+    }
 
 
 public List<ClassModel> getClassesByCourseId(long courseId) {
@@ -312,7 +353,37 @@ public List<ClassModel> getClassesByCourseId(long courseId) {
         cursor.close();
         return classList;
     }
+    public void syncOfflineDataToFirebase() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<ClassModel> offlineClasses = getAllClasses(); // Lấy tất cả lớp học (có thể thêm điều kiện để lấy lớp chưa đồng bộ)
 
+        for (ClassModel classModel : offlineClasses) {
+            // Kiểm tra nếu lớp học chưa được đồng bộ (bạn có thể thêm một trường trong ClassModel để xác định trạng thái đồng bộ)
+            if (!isClassSynced(Long.parseLong(classModel.getId()))) {
+                DatabaseReference classRef = FirebaseDatabase.getInstance().getReference("classes").child(String.valueOf(classModel.getId()));
+                classRef.setValue(classModel)
+                        .addOnSuccessListener(aVoid -> {
+                            // Đánh dấu dữ liệu là đã đồng bộ thành công
+                            markClassAsSynced(Long.parseLong(classModel.getId()));
+                        })
+                        .addOnFailureListener(e -> {
+                            // Xử lý lỗi nếu việc đồng bộ thất bại
+                            Log.e("DatabaseHelper", "Failed to sync class with ID: " + classModel.getId(), e);
+                        });
+            }
+        }
+    }
 
+    // Giả sử có phương thức kiểm tra xem lớp học đã được đồng bộ hay chưa
+    private boolean isClassSynced(long classId) {
+        // Logic để kiểm tra trạng thái đồng bộ, có thể dựa vào một trường trong cơ sở dữ liệu
+        // Ví dụ, kiểm tra một bảng trạng thái hoặc một trường trong lớp học
+        return false; // Thay đổi tùy theo logic của bạn
+    }
+
+    // Giả sử có phương thức đánh dấu lớp học đã được đồng bộ
+    private void markClassAsSynced(long classId) {
+        // Logic để cập nhật trạng thái đồng bộ, có thể cập nhật một trường trong cơ sở dữ liệu
+    }
 
 }
